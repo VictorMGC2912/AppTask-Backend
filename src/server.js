@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const port = 9000;
+const taskRouter = require("./routes/taskRoutes");
 
 //Inicializamos express y podemos acceder a todas sus funcionalidades
 const app = express(); //Creamos una instancia de la app express que nos servira para definir las rutas, middlewares, escuchar el servidor, etc
@@ -26,6 +27,7 @@ db.on("disconnected", () => {
 });
 
 //RUTAS
+app.use("/task", taskRouter);
 
 //ESCUCHA DEL PUERTO
 app.listen(port, () => {
