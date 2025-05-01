@@ -1,4 +1,4 @@
-const { getTask, createTask, deleteTask } = require("../controllers/taskControllers");
+const { getTask, createTask, deleteTask, toggleTask } = require("../controllers/taskControllers");
 
 const taskRouter = require('express').Router();
 
@@ -6,5 +6,6 @@ const taskRouter = require('express').Router();
 taskRouter.get('/', getTask);
 taskRouter.post('/', createTask);
 taskRouter.delete('/:id', deleteTask);
+taskRouter.put('/:id', toggleTask);
 
 module.exports = taskRouter;
