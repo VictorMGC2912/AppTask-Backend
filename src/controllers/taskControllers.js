@@ -72,15 +72,22 @@ const deleteTask = async (req, res) => {
 const toggleTask = async (req, res) => {
     try{
         const id = req.params.id;
-        const { title, completed } = req.body
+        const { title, description, completed } = req.body
 
         const taskAux = await taskModel.findById(id);
 
         if(!taskAux) return res.status(404).send('La tarea no existe');
 
+        if(title) {
+            taskAux.title = title
+        }
+        if(description) {
+            taskAux.description = description
+        }
         if(completed = false){
             taskAux.completed = true;
         }
+        
         await taskAux.save();
 
         res.status(200).json({
