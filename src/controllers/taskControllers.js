@@ -8,6 +8,7 @@ const getTask = async (req, res) => {
             return {
                 id: task.id,
                 title: task.title,
+                description: task.description,
                 completed: task.completed
             }
         });
@@ -31,6 +32,7 @@ const createTask = async (req, res) => {
         const taskData = req.body;
         const newTask = await taskModel({
             title: taskData.title,
+            description: taskData.description,
             completed: taskData.completed
         })
         await newTask.save()
