@@ -86,8 +86,11 @@ const toggleTask = async (req, res) => {
         if(description) {
             taskAux.description = description
         }
-        if(completed = false){
+        if(completed === false){
             taskAux.completed = true;
+        }
+        if(completed === true){
+            taskAux.completed = false;
         }
         
         await taskAux.save();
